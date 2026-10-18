@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Política de privacidad · Ronova IA</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --fondo: #000;
+      --texto: #f5f0ff;
+      --texto-2: #b9a9d6;
+      --acento: #ff3b5c;
+      --vidrio: rgba(8, 6, 14, 0.45);
+      --borde: rgba(255, 255, 255, 0.16);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      position: relative;
+      min-height: 100vh;
+      padding: 40px 16px 64px;
+      font-family: system-ui, -apple-system, "Helvetica Neue", sans-serif;
+      color: var(--texto);
+      line-height: 1.6;
+      background: var(--fondo);
+      overflow-x: hidden;
+    }
+    /* Las mismas franjas de luz que el panel: el vidrio las desenfoca */
+    body::before, body::after {
+      content: ""; position: fixed; left: -20%; right: -20%; transform: rotate(-12deg);
+      pointer-events: none; z-index: -1;
+    }
+    body::before {
+      top: 22%; height: 90px; opacity: .85; filter: blur(26px);
+      background: linear-gradient(90deg, transparent, #ff3b5c 25%, #a855f7 60%, transparent);
+    }
+    body::after {
+      top: 58%; height: 40px; opacity: .5; filter: blur(22px);
+      background: linear-gradient(90deg, transparent, #22d3ee 40%, transparent);
+    }
+    main {
+      max-width: 720px; margin: 0 auto;
+      background: var(--vidrio);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 24px;
+      padding: 32px 28px;
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.12), 0 18px 40px rgba(0, 0, 0, 0.6);
+    }
+    .marca { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px; }
+    .marca span {
+      display: inline-block; margin-left: 8px; padding: 0 10px; border-radius: 8px;
+      background: var(--acento); color: var(--fondo); font-size: .85em; vertical-align: middle;
+    }
+    h1 { font-size: 1.7rem; letter-spacing: -0.02em; margin: 16px 0 4px; }
+    h2 { font-size: 1.1rem; font-weight: 600; margin: 28px 0 8px; color: var(--texto); }
+    p, li { color: var(--texto); }
+    ul, ol { padding-left: 20px; }
+    li { margin: 6px 0; }
+    a { color: var(--acento); }
+    .chico { font-size: .85rem; color: var(--texto-2); margin: 0; }
+    hr { border: 0; border-top: 1px solid var(--borde); margin: 24px 0; }
+    @media (max-width: 640px) { main { padding: 24px 20px; border-radius: 20px; } }
+    @media (prefers-reduced-motion: reduce) { body::before, body::after { filter: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="marca"><a href="../" style="color:inherit;text-decoration:none">Ronova<span>IA</span></a></p>
+    <h1>Política de privacidad</h1>
+    <p class="chico">Última actualización: 17 de octubre de 2026</p>
+
+    <h2>Quién es responsable</h2>
+    <p>Ronova IA es operado por <strong>Harry Gonlez</strong>. Puedes escribirnos a
+    <a href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a> para cualquier duda sobre esta política.</p>
+    <p>Cada negocio que usa Ronova IA es el responsable de las conversaciones con sus propios clientes. Ronova IA procesa
+    esos datos únicamente para ese negocio y siguiendo sus instrucciones.</p>
+
+    <h2>Qué es Ronova IA</h2>
+    <p>Ronova IA crea asistentes automáticos que responden mensajes directos de WhatsApp, Instagram y Telegram
+    en nombre de negocios. Cuando alguien escribe a uno de esos negocios por estas plataformas, el asistente
+    responde de forma automática.</p>
+
+    <h2>Qué datos se guardan</h2>
+    <ul>
+      <li><strong>Nombre visible</strong> de la persona en la plataforma, si la plataforma lo entrega.</li>
+      <li><strong>Identificador de la conversación</strong> (por ejemplo, el número de WhatsApp o el id de Instagram), para poder responder.</li>
+      <li><strong>Los mensajes</strong> que escribe la persona y las respuestas del asistente, con su fecha y hora.</li>
+      <li><strong>Datos técnicos</strong> como el canal usado y cuántos mensajes se atendieron, para medir el servicio.
+      Estos registros no incluyen el contenido de los mensajes.</li>
+    </ul>
+    <p>No se guardan fotos, audios ni archivos que envíe la persona: esos mensajes se ignoran.</p>
+
+    <h2>Para qué se usan</h2>
+    <ul>
+      <li>Responder automáticamente los mensajes.</li>
+      <li>Pasar la conversación a una persona del negocio cuando se pide.</li>
+      <li>Mostrar al negocio el historial de sus conversaciones.</li>
+      <li>Revisar fallas y medir el uso del servicio.</li>
+    </ul>
+    <p>No se usan para publicidad ni se venden.</p>
+
+    <h2>Con quién se comparten</h2>
+    <p>Para funcionar, algunos datos pasan por estos servicios:</p>
+    <ul>
+      <li><strong>Cloudflare</strong>, donde se alojan el asistente y la base de conversaciones.</li>
+      <li><strong>Meta</strong> (Instagram y WhatsApp), por donde llegan y se envían los mensajes de esas plataformas.</li>
+      <li><strong>Proveedores de inteligencia artificial</strong> (Anthropic y Google), a quienes se envía el texto de la conversación
+      para generar la respuesta.</li>
+    </ul>
+
+    <h2>Cuánto tiempo se guardan</h2>
+    <p>Los mensajes se borran automáticamente a los 90 días. Los registros técnicos para evitar mensajes repetidos
+    se borran a los 7 días.</p>
+
+    <h2>Tus derechos</h2>
+    <p>Puedes pedir ver, corregir o borrar los datos que tengamos de ti escribiendo a
+    <a href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a>. Te respondemos en un plazo razonable.</p>
+
+    <h2>Dónde se guardan y cómo se protegen</h2>
+    <p>Las conversaciones se guardan en servidores de Cloudflare. Como esos servidores están distribuidos en distintos países,
+    los datos pueden procesarse fuera de tu país. Las conexiones con las plataformas y con los proveedores usan cifrado
+    (HTTPS), y las claves de acceso se guardan como secretos del servicio, no en archivos de texto.</p>
+
+    <h2>Eliminación de datos</h2>
+    <p>Puedes pedir que borremos tus datos en cualquier momento:</p>
+    <ol>
+      <li>Escribe a <a href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a> desde el correo de contacto
+      o indicando tu nombre de usuario en Instagram o tu número de WhatsApp.</li>
+      <li>Confirmaremos tu identidad con un mensaje de respuesta.</li>
+      <li>Borraremos las conversaciones y los datos asociados en un plazo máximo de 30 días. Si la conversación está en el
+      sistema de un negocio, también puedes pedírselo directamente a él.</li>
+    </ol>
+
+    <h2>Menores de edad</h2>
+    <p>El servicio no está dirigido a menores de 13 años. Si detectamos datos de un menor de esa edad, los borramos.</p>
+
+    <h2>Cambios a esta política</h2>
+    <p>Si cambiamos esta política, actualizaremos la fecha de arriba.</p>
+  </main>
+</body>
+</html>

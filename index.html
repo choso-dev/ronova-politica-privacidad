@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Política de privacidad · Ronova IA</title>
+  <title>Ronova IA · Asistentes de mensajes para negocios</title>
+  <meta name="description" content="Ronova IA crea asistentes con inteligencia artificial que responden los mensajes de WhatsApp e Instagram de los negocios.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <style>
     :root {
       color-scheme: dark;
@@ -19,126 +21,186 @@
     body {
       position: relative;
       min-height: 100vh;
-      padding: 40px 16px 64px;
+      padding: 32px 16px 56px;
       font-family: system-ui, -apple-system, "Helvetica Neue", sans-serif;
       color: var(--texto);
       line-height: 1.6;
       background: var(--fondo);
       overflow-x: hidden;
     }
-    /* Las mismas franjas de luz que el panel: el vidrio las desenfoca */
+    /* Las mismas franjas de luz que el panel y el portal */
     body::before, body::after {
       content: ""; position: fixed; left: -20%; right: -20%; transform: rotate(-12deg);
       pointer-events: none; z-index: -1;
     }
     body::before {
-      top: 22%; height: 90px; opacity: .85; filter: blur(26px);
+      top: 18%; height: 90px; opacity: .85; filter: blur(26px);
       background: linear-gradient(90deg, transparent, #ff3b5c 25%, #a855f7 60%, transparent);
     }
     body::after {
-      top: 58%; height: 40px; opacity: .5; filter: blur(22px);
+      top: 62%; height: 40px; opacity: .5; filter: blur(22px);
       background: linear-gradient(90deg, transparent, #22d3ee 40%, transparent);
     }
-    main {
-      max-width: 720px; margin: 0 auto;
+    .contenedor { max-width: 920px; margin: 0 auto; }
+    .vidrio {
       background: var(--vidrio);
       border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 24px;
-      padding: 32px 28px;
       backdrop-filter: blur(18px) saturate(160%);
       -webkit-backdrop-filter: blur(18px) saturate(160%);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(255, 255, 255, 0.12), 0 18px 40px rgba(0, 0, 0, 0.6);
     }
-    .marca { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 4px; }
-    .marca span {
-      display: inline-block; margin-left: 8px; padding: 0 10px; border-radius: 8px;
-      background: var(--acento); color: var(--fondo); font-size: .85em; vertical-align: middle;
+
+    /* Barra superior */
+    .barra { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 20px; border-radius: 999px; }
+    .marca { display: inline-flex; align-items: center; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; color: var(--texto); text-decoration: none; }
+    .marca .letra { width: .62em; height: .62em; margin: 0 .02em; vertical-align: -.02em; }
+    .marca span { display: inline-block; margin-left: 8px; padding: 1px 10px; border-radius: 9px; background: var(--acento); color: var(--fondo); font-size: .85em; }
+    .barra a.contacto { color: var(--texto-2); text-decoration: none; font-weight: 600; font-size: .95rem; }
+    .barra a.contacto:hover { color: var(--texto); }
+
+    /* Portada */
+    .portada { text-align: center; padding: 72px 8px 56px; }
+    .portada .ojo { width: 104px; height: 104px; color: #fff; }
+    .portada h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.15; letter-spacing: -0.03em; margin: 20px auto 16px; max-width: 18ch; }
+    .portada p { color: var(--texto-2); font-size: 1.1rem; max-width: 56ch; margin: 0 auto 28px; }
+
+    /* Botón de vidrio con relleno al pasar el cursor, igual que en el panel */
+    .boton {
+      position: relative; isolation: isolate; overflow: hidden; display: inline-block;
+      padding: 14px 26px; border-radius: 14px; font-weight: 600; color: var(--texto); text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.35);
+      transition: transform 160ms ease-out, border-color 200ms ease-out;
     }
-    h1 { font-size: 1.7rem; letter-spacing: -0.02em; margin: 16px 0 4px; }
-    h2 { font-size: 1.1rem; font-weight: 600; margin: 28px 0 8px; color: var(--texto); }
-    p, li { color: var(--texto); }
-    ul, ol { padding-left: 20px; }
-    li { margin: 6px 0; }
-    a { color: var(--acento); }
-    .chico { font-size: .85rem; color: var(--texto-2); margin: 0; }
-    hr { border: 0; border-top: 1px solid var(--borde); margin: 24px 0; }
-    @media (max-width: 640px) { main { padding: 24px 20px; border-radius: 20px; } }
-    @media (prefers-reduced-motion: reduce) { body::before, body::after { filter: none; } }
+    .boton::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+      background: linear-gradient(90deg, rgba(255, 59, 92, 0.9), rgba(168, 85, 247, 0.8));
+      transform: scaleX(0); transform-origin: left center; transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .boton:hover { border-color: rgba(255, 255, 255, 0.55); }
+    .boton:hover::before { transform: scaleX(1); }
+    .boton:active { transform: scale(.98); }
+    a:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+
+    /* Secciones */
+    section { margin-top: 28px; padding: 32px 28px; }
+    h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .sub { color: var(--texto-2); margin: 0 0 24px; }
+    .rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .item { padding: 20px; border-radius: 18px; border: 1px solid var(--borde); background: rgba(255, 255, 255, 0.03); }
+    .item h3 { font-size: 1.05rem; margin: 10px 0 6px; }
+    .item p { margin: 0; color: var(--texto-2); font-size: .95rem; }
+    .numero { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px; background: var(--acento); color: var(--fondo); font-weight: 700; }
+    .insignia { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; color: #fff; }
+    .insignia svg { width: 22px; height: 22px; }
+    .insignia.whatsapp { background: #25d366; }
+    .insignia.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+
+    .cierre { text-align: center; }
+    .cierre p { color: var(--texto-2); margin: 0 auto 24px; max-width: 52ch; }
+
+    footer { margin-top: 32px; text-align: center; color: var(--texto-2); font-size: .85rem; }
+    footer a { color: var(--texto-2); }
+    footer a:hover { color: var(--texto); }
+
+    @media (max-width: 640px) {
+      .barra { padding: 10px 16px; }
+      .portada { padding: 48px 4px 40px; }
+      section { padding: 24px 20px; border-radius: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .boton, .boton::before { transition: none; }
+      .boton:active { transform: none; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <p class="marca">Ronova<span>IA</span></p>
-    <h1>Política de privacidad</h1>
-    <p class="chico">Última actualización: 17 de octubre de 2026</p>
+  <div class="contenedor">
 
-    <h2>Quién es responsable</h2>
-    <p>Ronova IA es operado por <strong>Harry Gonlez</strong>. Puedes escribirnos a
-    <a href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a> para cualquier duda sobre esta política.</p>
-    <p>Cada negocio que usa Ronova IA es el responsable de las conversaciones con sus propios clientes. Ronova IA procesa
-    esos datos únicamente para ese negocio y siguiendo sus instrucciones.</p>
+    <header class="barra vidrio">
+      <a class="marca" href="./" aria-label="Ronova IA, inicio">R<svg class="letra" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="44" fill="none" stroke="currentColor" stroke-width="16"/><circle cx="60" cy="60" r="14" fill="#FF3B5C"/><circle cx="92" cy="28" r="9" fill="#FF3B5C"/></svg>nova<span>IA</span></a>
+      <a class="contacto" href="mailto:ronovaIA.oficial@gmail.com">Contacto</a>
+    </header>
 
-    <h2>Qué es Ronova IA</h2>
-    <p>Ronova IA crea asistentes automáticos que responden mensajes directos de WhatsApp, Instagram y Telegram
-    en nombre de negocios. Cuando alguien escribe a uno de esos negocios por estas plataformas, el asistente
-    responde de forma automática.</p>
+    <main>
+      <div class="portada">
+        <svg class="ojo" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="44" fill="none" stroke="currentColor" stroke-width="12"/><circle cx="60" cy="60" r="14" fill="#FF3B5C"/><circle cx="92" cy="28" r="9" fill="#FF3B5C"/></svg>
+        <h1>Responde a cada cliente, aunque no estés disponible</h1>
+        <p>Ronova IA crea asistentes con inteligencia artificial que responden los mensajes de WhatsApp e Instagram de tu negocio, con tu información y en tu tono.</p>
+        <a class="boton" href="mailto:ronovaIA.oficial@gmail.com?subject=Quiero%20un%20asistente%20para%20mi%20negocio">Quiero un asistente</a>
+      </div>
 
-    <h2>Qué datos se guardan</h2>
-    <ul>
-      <li><strong>Nombre visible</strong> de la persona en la plataforma, si la plataforma lo entrega.</li>
-      <li><strong>Identificador de la conversación</strong> (por ejemplo, el número de WhatsApp o el id de Instagram), para poder responder.</li>
-      <li><strong>Los mensajes</strong> que escribe la persona y las respuestas del asistente, con su fecha y hora.</li>
-      <li><strong>Datos técnicos</strong> como el canal usado y cuántos mensajes se atendieron, para medir el servicio.
-      Estos registros no incluyen el contenido de los mensajes.</li>
-    </ul>
-    <p>No se guardan fotos, audios ni archivos que envíe la persona: esos mensajes se ignoran.</p>
+      <section class="vidrio" aria-labelledby="que-hacemos">
+        <h2 id="que-hacemos">Qué hacemos</h2>
+        <p class="sub">Los mensajes llegan a todas horas, y cada uno sin respuesta es un cliente que se puede ir.</p>
+        <div class="rejilla">
+          <div class="item">
+            <h3>Responde con tu información</h3>
+            <p>El asistente conoce tus productos, precios, horarios y ubicación, y contesta las preguntas frecuentes.</p>
+          </div>
+          <div class="item">
+            <h3>Pasa a tu equipo cuando hace falta</h3>
+            <p>Si el cliente pide hablar con una persona, o la conversación lo necesita, el asistente le avisa a tu equipo.</p>
+          </div>
+          <div class="item">
+            <h3>Todo a la vista en tu portal</h3>
+            <p>Revisas tus conversaciones en un portal privado, separadas por WhatsApp e Instagram.</p>
+          </div>
+        </div>
+      </section>
 
-    <h2>Para qué se usan</h2>
-    <ul>
-      <li>Responder automáticamente los mensajes.</li>
-      <li>Pasar la conversación a una persona del negocio cuando se pide.</li>
-      <li>Mostrar al negocio el historial de sus conversaciones.</li>
-      <li>Revisar fallas y medir el uso del servicio.</li>
-    </ul>
-    <p>No se usan para publicidad ni se venden.</p>
+      <section class="vidrio" aria-labelledby="canales">
+        <h2 id="canales">Dónde atiende</h2>
+        <p class="sub">En las redes donde tus clientes ya te escriben.</p>
+        <div class="rejilla">
+          <div class="item">
+            <span class="insignia whatsapp" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.16l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"/></svg></span>
+            <h3>WhatsApp</h3>
+            <p>Responde los mensajes que llegan al número de tu negocio.</p>
+          </div>
+          <div class="item">
+            <span class="insignia instagram" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24ZM128,176a48,48,0,1,1,48-48A48.05,48.05,0,0,1,128,176Zm60-96a12,12,0,1,1,12-12A12,12,0,0,1,188,80Zm-28,48a32,32,0,1,1-32-32A32,32,0,0,1,160,128Z"/></svg></span>
+            <h3>Instagram</h3>
+            <p>Atiende los mensajes directos de tu cuenta de Instagram.</p>
+          </div>
+        </div>
+      </section>
 
-    <h2>Con quién se comparten</h2>
-    <p>Para funcionar, algunos datos pasan por estos servicios:</p>
-    <ul>
-      <li><strong>Cloudflare</strong>, donde se alojan el asistente y la base de conversaciones.</li>
-      <li><strong>Meta</strong> (Instagram y WhatsApp), por donde llegan y se envían los mensajes de esas plataformas.</li>
-      <li><strong>Proveedores de inteligencia artificial</strong> (Anthropic y Google), a quienes se envía el texto de la conversación
-      para generar la respuesta.</li>
-    </ul>
+      <section class="vidrio" aria-labelledby="como-funciona">
+        <h2 id="como-funciona">Cómo funciona</h2>
+        <p class="sub">Nosotros nos encargamos de la configuración y el mantenimiento.</p>
+        <div class="rejilla">
+          <div class="item">
+            <span class="numero">1</span>
+            <h3>Nos cuentas de tu negocio</h3>
+            <p>Productos, precios, horarios y cómo quieres que hable el asistente.</p>
+          </div>
+          <div class="item">
+            <span class="numero">2</span>
+            <h3>Conectamos tus redes</h3>
+            <p>Enlazamos tu WhatsApp y tu Instagram con el asistente.</p>
+          </div>
+          <div class="item">
+            <span class="numero">3</span>
+            <h3>Tu asistente empieza a atender</h3>
+            <p>Responde a tus clientes y tú revisas todo desde tu portal.</p>
+          </div>
+        </div>
+      </section>
 
-    <h2>Cuánto tiempo se guardan</h2>
-    <p>Los mensajes se borran automáticamente a los 90 días. Los registros técnicos para evitar mensajes repetidos
-    se borran a los 7 días.</p>
+      <section class="vidrio cierre" aria-labelledby="contacto">
+        <h2 id="contacto">Hablemos</h2>
+        <p>Escríbenos y te contamos cómo puede funcionar en tu negocio.</p>
+        <a class="boton" href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a>
+      </section>
+    </main>
 
-    <h2>Tus derechos</h2>
-    <p>Puedes pedir ver, corregir o borrar los datos que tengamos de ti escribiendo a
-    <a href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a>. Te respondemos en un plazo razonable.</p>
+    <footer>
+      <p>© 2026 Ronova IA · <a href="privacidad/">Política de privacidad</a></p>
+    </footer>
 
-    <h2>Dónde se guardan y cómo se protegen</h2>
-    <p>Las conversaciones se guardan en servidores de Cloudflare. Como esos servidores están distribuidos en distintos países,
-    los datos pueden procesarse fuera de tu país. Las conexiones con las plataformas y con los proveedores usan cifrado
-    (HTTPS), y las claves de acceso se guardan como secretos del servicio, no en archivos de texto.</p>
-
-    <h2>Eliminación de datos</h2>
-    <p>Puedes pedir que borremos tus datos en cualquier momento:</p>
-    <ol>
-      <li>Escribe a <a href="mailto:ronovaIA.oficial@gmail.com">ronovaIA.oficial@gmail.com</a> desde el correo de contacto
-      o indicando tu nombre de usuario en Instagram o tu número de WhatsApp.</li>
-      <li>Confirmaremos tu identidad con un mensaje de respuesta.</li>
-      <li>Borraremos las conversaciones y los datos asociados en un plazo máximo de 30 días. Si la conversación está en el
-      sistema de un negocio, también puedes pedírselo directamente a él.</li>
-    </ol>
-
-    <h2>Menores de edad</h2>
-    <p>El servicio no está dirigido a menores de 13 años. Si detectamos datos de un menor de esa edad, los borramos.</p>
-
-    <h2>Cambios a esta política</h2>
-    <p>Si cambiamos esta política, actualizaremos la fecha de arriba.</p>
-  </main>
+  </div>
 </body>
 </html>
